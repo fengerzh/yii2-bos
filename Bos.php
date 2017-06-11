@@ -19,12 +19,13 @@ class Bos
             $img_arr = explode('.', $image->name);
             $ext = end($img_arr);
             if (empty($save_file_name)) {
-                $filename = $remote_path . '/' . $image->name;
+                $filename = $image->name;
             } else {
-                $filename = $remote_path . '/' . $save_file_name . '.' . $ext;
+                $filename = $save_file_name . '.' . $ext;
             }
-            $filepath = '/tmp/' . $filename;
-            if (!$image->saveAs($filepath)) {
+            $remote_filename = $remote_path . '/' . $filename;
+            $local_filename = '/tmp/' . $filename;
+            if (!$image->saveAs($local_filename)) {
                 //保存图片失败
                 if ($image->error == UPLOAD_ERR_INI_SIZE) {
                     echo '文件尺寸太大！';
@@ -44,9 +45,9 @@ class Bos
                         'endpoint' => Yii::$app->params['baidu.bos.endpoint']
                     ]
                 );
-                $client->putObjectFromFile($bucket, $filename, $filepath);
+                $client->putObjectFromFile($bucket, $remote_filename, $local_filename);
                 //删除本地图片
-                unlink($filepath);
+                unlink($local_filename);
             }
         }
         return $filename;
