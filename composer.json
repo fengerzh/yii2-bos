@@ -1,0 +1,22 @@
+{
+    "name": "fengerzh/yii2-bos",
+    "type": "yii2-extension",
+    "description": "Baidu cloud storage for Yii2",
+    "keywords": ["bos", "yii2"],
+    "homepage": "https://github.com/fengerzh/yii2-bos",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Buzz Zhang",
+            "email": "buzz.zhang@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "fengerzh\\bos\\": ""
+        }
+    }
+}
