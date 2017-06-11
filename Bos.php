@@ -10,6 +10,6 @@ class Bos
 {
     public function saveToBos()
     {
-        echo 'haha';
+        echo 'Hello world!';
     }
 }
