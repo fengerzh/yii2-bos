@@ -12,9 +12,10 @@ use BaiduBce\Services\Bos\BosClient;
 
 class Bos
 {
-    public static function saveToBos($model, $bucket, $remote_path, $save_file_name = '')
+    public static function saveToBos($model, $field, $bucket, $remote_path, $save_file_name = '')
     {
-        $image = UploadedFile::getInstance($model, 'logo_file');
+        $image = UploadedFile::getInstance($model, $field);
+        $filename = '';
         if (isset($image) && $image != null) {
             $img_arr = explode('.', $image->name);
             $ext = end($img_arr);
