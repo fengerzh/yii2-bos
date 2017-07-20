@@ -53,4 +53,19 @@ class Bos
         }
         return $filename;
     }
+
+    public static function deleteFromBos($bucket, $objectKey)
+    {
+        $client = new BosClient(
+            [
+                'credentials' => [
+                    'ak' => Yii::$app->params['baidu.bos.ak'],
+                    'sk' => Yii::$app->params['baidu.bos.sk']
+                ],
+                'endpoint' => Yii::$app->params['baidu.bos.endpoint']
+            ]
+        );
+        $client->deleteObject($bucket, $objectKey);
+        return '';
+    }
 }
